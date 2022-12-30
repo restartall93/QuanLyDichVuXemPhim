@@ -9,5 +9,6 @@ package Client;
  * @author ADMIN
  */
 public class Config {
-    
+    public String rmihost = "rmi://localhost:1999/quanlyrapphim";
+    public int port = 1999;
 }

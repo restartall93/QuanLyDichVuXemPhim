@@ -53,7 +53,7 @@ public class frmDangNhap extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Mật Khẩu");
+        jLabel3.setText("Mật Khẩu:");
         jLabel3.setMaximumSize(new java.awt.Dimension(101, 17));
         jLabel3.setMinimumSize(new java.awt.Dimension(101, 17));
         jLabel3.setPreferredSize(new java.awt.Dimension(101, 17));
