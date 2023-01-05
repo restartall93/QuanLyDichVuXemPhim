@@ -52,4 +52,53 @@ public class LopTaiKhoan {
         }
         return false;
     }
+    
+    public TaiKhoan thongTin(String taikhoan){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(config.DB_URL, config.DB_USER, config.DB_PASS); 
+            stmt = conn.createStatement();
+            String sql = "SELECT `taikhoan`, `ten`, `matkhau` FROM taikhoan WHERE taikhoan = '"+ taikhoan +"'";
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            return new TaiKhoan(rs.getString(1), rs.getString(2), rs.getString(3));
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(LopTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return new TaiKhoan();
+    }
+
+    public int dangKy(String taikhoan, String ten, String matkhau){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(config.DB_URL, config.DB_USER, config.DB_PASS); 
+            stmt = conn.createStatement();
+            String sql = "SELECT taikhoan FROM taikhoan WHERE taikhoan = '"+ taikhoan +"'";
+            rs = stmt.executeQuery(sql);            
+            if (rs.next()) {
+                return 2;
+            }
+
+            sql = "INSERT INTO `taikhoan`(`taikhoan`, `ten`, `matkhau`) VALUES ('" +taikhoan+ "','" +ten+ "','" +matkhau+ "')";
+            stmt.execute(sql);
+            return 1;
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(LopTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+        
+    }
+    public int capNhat(String taikhoan, String ten, String matkhau){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(config.DB_URL, config.DB_USER, config.DB_PASS); 
+            stmt = conn.createStatement();
+            String sql = "UPDATE `taikhoan` SET `ten`='" +ten+ "',`matkhau`='" +matkhau+ "' WHERE `taikhoan` = '" +taikhoan+ "'";
+            stmt.executeUpdate(sql);
+            return 1;
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(LopTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;        
+    }
 }
