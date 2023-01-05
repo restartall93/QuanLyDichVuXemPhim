@@ -4,12 +4,17 @@
  */
 package Server;
 
-/**
- *
- * @author ADMIN
- */
-public class frmTrangChu extends javax.swing.JFrame {
+import java.awt.Color;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+public class frmTrangChu extends javax.swing.JFrame {
+    private boolean RMI_isOn = false;
+    public Config config = new Config();
     /**
      * Creates new form frmTrangChu
      */
@@ -49,12 +54,22 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnHeThong.setForeground(new java.awt.Color(255, 255, 255));
         btnHeThong.setText("Hệ Thống: Tắt");
         btnHeThong.setBorder(null);
+        btnHeThong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHeThongActionPerformed(evt);
+            }
+        });
 
         btnDangXuat.setBackground(new java.awt.Color(48, 51, 107));
         btnDangXuat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDangXuat.setForeground(new java.awt.Color(255, 255, 255));
         btnDangXuat.setText("Đăng Xuất");
         btnDangXuat.setBorder(null);
+        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangXuatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -117,9 +132,40 @@ public class frmTrangChu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnHeThongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHeThongActionPerformed
+        if(!RMI_isOn){
+            try {
+                LocateRegistry.createRegistry(config.port);               
+            }
+            catch (RemoteException ex) {
+                Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);               
+            }
+//            XuLy xuLy = null;
+//            try {
+//                xuLy = new XuLy();                
+//            }
+//            catch (RemoteException ex) {
+//                Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);             
+//            }
+//            try {
+//                Naming.rebind(config.rmihost, xuLy);               
+//            }
+//            catch (RemoteException ex | MalformedURLException) {
+//                Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+            System.out.println("Server Ready");
+            btnHeThong.setText("Hệ thống: Đã bật");
+            
+            
+        }
+    }//GEN-LAST:event_btnHeThongActionPerformed
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        new frmDangNhap().setVisible(true);
+        this.setVisible(false);        
+    }//GEN-LAST:event_btnDangXuatActionPerformed
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -145,10 +191,10 @@ public class frmTrangChu extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(() -> {
+          
                 new frmTrangChu().setVisible(true);
-            }
+            
         });
     }
 

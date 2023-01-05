@@ -136,6 +136,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHeThongActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnDangXuat">
               <Properties>
@@ -153,6 +156,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDangXuatActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
