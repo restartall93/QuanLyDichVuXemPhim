@@ -43,7 +43,6 @@ public class XuLy extends  UnicastRemoteObject implements InterfaceXuLy {
         } catch (RemoteException | MalformedURLException ex) {
             Logger.getLogger(XuLy.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
    
     //TaiKhoan
