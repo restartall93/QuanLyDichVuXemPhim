@@ -22,5 +22,5 @@ public interface InterfaceXuLy extends Remote{
     public int CapNhat(String taikhoan, String ten, String matkhau) throws RemoteException;
     public TaiKhoan ThongTin(String taikhoan) throws RemoteException;
     
-
+    
 }

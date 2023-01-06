@@ -65,4 +65,6 @@ public class XuLy extends  UnicastRemoteObject implements InterfaceXuLy {
     public TaiKhoan ThongTin(String taikhoan) throws RemoteException {
         return new LopTaiKhoan().thongTin(taikhoan);
     }
+    
+    
 }
