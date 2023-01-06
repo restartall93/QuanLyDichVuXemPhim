@@ -66,5 +66,111 @@ public class XuLy extends  UnicastRemoteObject implements InterfaceXuLy {
         return new LopTaiKhoan().thongTin(taikhoan);
     }
     
+    //Rap
+    @Override
+    public List<Rap> DanhSachRap() throws RemoteException {
+        return new LopRap().DanhSachRap();
+    }
+
+    @Override
+    public boolean ThemRap() throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean XoaRap() throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean SuaRap() throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    //Phong
+    @Override
+    public List<Phong> DanhSachPhong() throws RemoteException {
+        return new LopPhong().DanhSachPhong();
+    }
+
+    @Override
+    public boolean ThemPhong() throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean XoaPhong() throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean SuaPhong() throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    //Phim
+    @Override
+    public List<Phim> DanhSachPhim() throws RemoteException {
+        return new LopPhim().DanhSachPhim();
+    }
+
+    @Override
+    public boolean ThemPhim(Phim p) throws RemoteException {
+        return new LopPhim().ThemPhim(p);
+    }
+
+    @Override
+    public boolean XoaPhim() throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean SuaPhim() throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    //Ghe
+
+    @Override
+    public List<Ghe> DanhSachGhe(int idPhong) throws RemoteException {
+        return new LopGhe().DanhSachGhe(idPhong);
+    }
+
+    @Override
+    public ArrayList<Integer> DanhSachGheDaDat(int idPhong) throws RemoteException {
+        return new LopGhe().DanhSachGheDaDat(idPhong);
+    }
+
+    @Override
+    public int soHang(int idPhong) throws RemoteException {
+        return new LopGhe().soHang(idPhong);
+    }
+
+    @Override
+    public int soCot(int idPhong) throws RemoteException {
+        return new LopGhe().soCot(idPhong);
+    }
+
+    @Override
+    public List<Lich> DanhSachLich(int idPhim, int idRap) throws RemoteException {
+        return new LopLich().DanhSachLich(idPhim, idRap);
+    }
+
+
+    //Vé
+    @Override
+    public List<Ve> DanhSachVe(String idKH) throws RemoteException {
+        return new LopVe().DanhSachVe(idKH);
+    }
+
+    @Override
+    public void DatVe(String idKH, int idLich, int idGhe) throws RemoteException {
+        new LopVe().DatVe(idKH, idLich, idGhe);
+    }
+
+    @Override
+    public List<Loai> DanhSachTheLoai() throws RemoteException {
+       return new LopLoaiPhim().DanhSachTheLoai();
+   }
     
 }

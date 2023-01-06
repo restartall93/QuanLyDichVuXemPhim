@@ -22,5 +22,37 @@ public interface InterfaceXuLy extends Remote{
     public int CapNhat(String taikhoan, String ten, String matkhau) throws RemoteException;
     public TaiKhoan ThongTin(String taikhoan) throws RemoteException;
     
+    //Rap
+    public List<Rap> DanhSachRap() throws RemoteException;
+    public boolean ThemRap() throws RemoteException;
+    public boolean XoaRap() throws RemoteException;
+    public boolean SuaRap() throws RemoteException;
+
+    //Phong
+    public List<Phong> DanhSachPhong() throws RemoteException;
+    public boolean ThemPhong() throws RemoteException;
+    public boolean XoaPhong() throws RemoteException;
+    public boolean SuaPhong() throws RemoteException;
+
+    //Phim
+    public List<Phim> DanhSachPhim() throws RemoteException;
+    public boolean ThemPhim(Phim p) throws RemoteException;
+    public boolean XoaPhim() throws RemoteException;
+    public boolean SuaPhim() throws RemoteException;
+
+    //Ghe
+    public List<Ghe> DanhSachGhe(int idPhong) throws RemoteException;
+    public ArrayList<Integer> DanhSachGheDaDat(int idPhong) throws RemoteException;
+    public int soHang(int idPhong) throws RemoteException;
+    public int soCot(int idPhong) throws RemoteException;
     
+    //Lịch
+    public List<Lich> DanhSachLich(int idPhim, int idPhong) throws RemoteException;
+
+    //Vé
+    public List<Ve> DanhSachVe(String idKH) throws RemoteException;
+    public void DatVe(String idKH, int idLich, int idGhe) throws RemoteException;
+    
+    //Loại
+    public List<Loai> DanhSachTheLoai() throws RemoteException;
 }
