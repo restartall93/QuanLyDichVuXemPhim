@@ -9,5 +9,5 @@ public class Config {
     public int port = 1999;
     public String DB_URL = "jdbc:mysql://localhost:3306/quanlyrapphim?useUnicode=yes&characterEncoding=UTF-8&allowMultiQueries=true";
     public String DB_USER = "root";
-    public String DB_PASS = "123456";
+    public String DB_PASS = "habin2001";
 }

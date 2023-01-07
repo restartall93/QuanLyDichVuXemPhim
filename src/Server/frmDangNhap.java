@@ -4,12 +4,14 @@
  */
 package Server;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ADMIN
  */
 public class frmDangNhap extends javax.swing.JFrame {
-
+    public Config config = new Config();
     /**
      * Creates new form frmDangNhap
      */
@@ -137,7 +139,21 @@ public class frmDangNhap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        // TODO add your handling code here:
+        String u = this.txtUser.getText();
+        String p = String.valueOf(this.txtPass.getPassword());
+        if(u.isEmpty() || p.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Vui lòng nhập đầy đủ thông tin!","Lỗi",JOptionPane.ERROR_MESSAGE);
+            return ;
+        }
+        LopTaiKhoan model = new LopTaiKhoan();
+        boolean  resDangNhap = model.dangNhapAdmin(u, p);
+        if(resDangNhap) {
+            frmTrangChu trangChu = new frmTrangChu();
+            trangChu.setVisible(true);
+            this.setVisible(false);
+        } else{
+            JOptionPane.showMessageDialog(this,"Sai tài khoản hoặc mật khẩu!","Lỗi",JOptionPane.ERROR_MESSAGE);            
+        }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**
@@ -168,10 +184,8 @@ public class frmDangNhap extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmDangNhap().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() ->  {         
+            new frmDangNhap().setVisible(true);         
         });
     }
 
