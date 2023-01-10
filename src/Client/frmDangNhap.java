@@ -4,8 +4,16 @@
  */
 package Client;
 
-public class frmDangNhap extends javax.swing.JFrame {
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import javax.swing.JOptionPane;
+import Server.InterfaceXuLy;
 
+public class frmDangNhap extends javax.swing.JFrame {
+    public Config config = new Config();
     /**
      * Creates new form frmDangNhap
      */
@@ -41,8 +49,6 @@ public class frmDangNhap extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Quản Lý Vé Xem Phim");
-        jLabel1.setMaximumSize(new java.awt.Dimension(198, 22));
-        jLabel1.setMinimumSize(new java.awt.Dimension(198, 22));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -62,14 +68,21 @@ public class frmDangNhap extends javax.swing.JFrame {
         btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setText("Đăng Nhập");
         btnDangNhap.setBorder(null);
-        btnDangNhap.setMaximumSize(new java.awt.Dimension(78, 17));
-        btnDangNhap.setMinimumSize(new java.awt.Dimension(78, 17));
-        btnDangNhap.setPreferredSize(new java.awt.Dimension(78, 17));
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
+            }
+        });
 
         lblDangKy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblDangKy.setForeground(new java.awt.Color(255, 255, 102));
         lblDangKy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDangKy.setText("Chưa có tài khoản? Đăng ký");
+        lblDangKy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDangKyMouseClicked(evt);
+            }
+        });
 
         lblQuenMatKhau.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblQuenMatKhau.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,6 +162,16 @@ public class frmDangNhap extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblDangKyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangKyMouseClicked
+        frmDangKy dangKy = new frmDangKy();
+        dangKy.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_lblDangKyMouseClicked
+
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+           
+    }//GEN-LAST:event_btnDangNhapActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -177,10 +200,8 @@ public class frmDangNhap extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmDangNhap().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {          
+                new frmDangNhap().setVisible(true);         
         });
     }
 
