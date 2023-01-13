@@ -35,10 +35,10 @@ public class frmDangNhap extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtPass = new javax.swing.JTextField();
         btnDangNhap = new javax.swing.JButton();
         lblDangKy = new javax.swing.JLabel();
         lblQuenMatKhau = new javax.swing.JLabel();
+        txtPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(400, 327));
@@ -60,8 +60,6 @@ public class frmDangNhap extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Mật Khẩu:");
-
-        txtPass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         btnDangNhap.setBackground(new java.awt.Color(104, 109, 224));
         btnDangNhap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -88,36 +86,34 @@ public class frmDangNhap extends javax.swing.JFrame {
         lblQuenMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         lblQuenMatKhau.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblQuenMatKhau.setText("Quên Mật Khẩu?");
+        lblQuenMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblQuenMatKhauMouseClicked(evt);
+            }
+        });
+
+        txtPass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblDangKy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblQuenMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(txtUser))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(txtPass))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblDangKy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblQuenMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtUser)
+                            .addComponent(txtPass))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -133,13 +129,13 @@ public class frmDangNhap extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblDangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblQuenMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,8 +165,34 @@ public class frmDangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_lblDangKyMouseClicked
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-           
+        String u = this.txtUser.getText();
+        String p = String.valueOf(this.txtPass.getPassword());
+        if(u.isEmpty() || p.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Vui lòng nhập đầy đủ thông tin!","Lỗi",JOptionPane.ERROR_MESSAGE);
+            return ;
+        }
+        try {
+            LocateRegistry.getRegistry(config.rmihost);
+            InterfaceXuLy ip = (InterfaceXuLy) Naming.lookup(config.rmihost);
+            boolean  resDangNhap = ip.DangNhap(u, p);
+            if(resDangNhap) {
+                frmTrangChu trangChu = new frmTrangChu(u);
+                trangChu.setExtendedState(MAXIMIZED_BOTH);
+                trangChu.setVisible(true);
+                this.setVisible(false);
+            } else{
+                JOptionPane.showMessageDialog(this,"Sai tài khoản hoặc mật khẩu!","Lỗi",JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NotBoundException | MalformedURLException | RemoteException ex) {
+                JOptionPane.showMessageDialog(this,"Lỗi kết nối server!\n"+ex,"Lỗi",JOptionPane.ERROR_MESSAGE);            
+        }
     }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void lblQuenMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMatKhauMouseClicked
+        frmQuenMatKhau quenMatKhau = new frmQuenMatKhau();
+        quenMatKhau.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_lblQuenMatKhauMouseClicked
 
     /**
      * @param args the command line arguments
@@ -213,7 +235,7 @@ public class frmDangNhap extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDangKy;
     private javax.swing.JLabel lblQuenMatKhau;
-    private javax.swing.JTextField txtPass;
+    private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

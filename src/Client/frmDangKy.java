@@ -3,13 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Client;
-
-/**
- *
- * @author Duc
- */
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import javax.swing.JOptionPane;
+import Server.InterfaceXuLy;
 public class frmDangKy extends javax.swing.JFrame {
-
+    public Config config = new Config();
     /**
      * Creates new form frmDangKy
      */
@@ -39,6 +41,11 @@ public class frmDangKy extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(19, 15, 64));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -68,6 +75,11 @@ public class frmDangKy extends javax.swing.JFrame {
         btnDangKy.setForeground(new java.awt.Color(255, 255, 255));
         btnDangKy.setText("Đăng Ký");
         btnDangKy.setBorder(null);
+        btnDangKy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangKyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -146,6 +158,40 @@ public class frmDangKy extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
+        String taikhoan = this.txtTaiKhoan.getText();
+        String ten = this.txtTen.getText();
+        String matkhau = String.valueOf(this.txtMatKhau.getPassword());
+        if(taikhoan.isEmpty() || ten.isEmpty() || matkhau.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Vui lòng nhập đầy đủ thông tin!","Lỗi",JOptionPane.ERROR_MESSAGE);
+            return ;
+        }
+        try {
+            LocateRegistry.getRegistry(config.rmihost);
+            InterfaceXuLy xl = (InterfaceXuLy) Naming.lookup(config.rmihost);
+            int  resDangKy = xl.DangKy(taikhoan, ten, matkhau);
+            if(resDangKy == 1) {
+                JOptionPane.showMessageDialog(this,"Đăng ký thành công!","Thành Công",JOptionPane.INFORMATION_MESSAGE);
+                frmDangNhap dangNhap = new frmDangNhap();
+                dangNhap.setVisible(true);
+                this.setVisible(false);
+            } else if (resDangKy == 2) {
+                JOptionPane.showMessageDialog(this,"Tài khoản đã tồn tại!","Lỗi",JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Lỗi!","Lỗi",JOptionPane.ERROR_MESSAGE);                
+            }
+        } catch (NotBoundException | MalformedURLException | RemoteException ex) {
+                JOptionPane.showMessageDialog(this,"Lỗi kết nối server!\n"+ex,"Lỗi",JOptionPane.ERROR_MESSAGE);            
+        }
+    }//GEN-LAST:event_btnDangKyActionPerformed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        frmDangNhap dangNhap = new frmDangNhap();
+        dangNhap.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
      * @param args the command line arguments
