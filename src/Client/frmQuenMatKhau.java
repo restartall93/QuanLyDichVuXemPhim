@@ -4,10 +4,6 @@
  */
 package Client;
 
-/**
- *
- * @author Duc
- */
 public class frmQuenMatKhau extends javax.swing.JFrame {
 
     /**

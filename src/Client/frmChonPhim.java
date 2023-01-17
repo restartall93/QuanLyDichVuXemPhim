@@ -73,9 +73,9 @@ public class frmChonPhim {
                 b.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-//                        frmXemThongTinPhim thongTinPhim = new frmXemThongTinPhim(idKH, p);
-//                        thongTinPhim.setExtendedState(MAXIMIZED_BOTH);
-//                        thongTinPhim.setVisible(true);                        
+                        frmXemThongTinPhim thongTinPhim = new frmXemThongTinPhim(idKH, p);
+                        thongTinPhim.setExtendedState(MAXIMIZED_BOTH);
+                        thongTinPhim.setVisible(true);                        
                         frame.setVisible(false);
                     }
                 });

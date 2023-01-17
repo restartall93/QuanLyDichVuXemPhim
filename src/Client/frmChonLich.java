@@ -98,8 +98,8 @@ public class frmChonLich {
         prev.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                frmChonRap chonRap = new frmChonRap(idKH, idPhim);
-//                frame.setVisible(false);
+                frmChonRap chonRap = new frmChonRap(idKH, idPhim);
+                frame.setVisible(false);
             }
         });
         bottomPanel.add(prev, BorderLayout.WEST);

@@ -63,8 +63,8 @@ public class frmChonRap {
             b.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-//                    frmChonLich chonLich = new frmChonLich(idKH, idPhim, r.getIdRap());
-//                    frame.setVisible(false);
+                    frmChonLich chonLich = new frmChonLich(idKH, idPhim, r.getIdRap());
+                    frame.setVisible(false);
                 }
             });
             jpnlRap.add(b, BorderLayout.NORTH);

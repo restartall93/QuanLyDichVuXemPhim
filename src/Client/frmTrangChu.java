@@ -72,6 +72,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnVeDaMua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/movie-ticket.png"))); // NOI18N
         btnVeDaMua.setText("Vé Đã Mua");
         btnVeDaMua.setBorder(null);
+        btnVeDaMua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVeDaMuaActionPerformed(evt);
+            }
+        });
 
         btnCaNhan.setBackground(new java.awt.Color(48, 51, 107));
         btnCaNhan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -150,12 +155,20 @@ public class frmTrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
     private void btnDatVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatVeActionPerformed
-        
+        frmChonPhim chonPhim = new frmChonPhim(idKH);
+        this.setVisible(false);
     }//GEN-LAST:event_btnDatVeActionPerformed
 
     private void btnCaNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaNhanActionPerformed
-        // TODO add your handling code here:
+        frmCaNhan caNhan = new frmCaNhan(idKH);
+        caNhan.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnCaNhanActionPerformed
+
+    private void btnVeDaMuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeDaMuaActionPerformed
+        frmXemVe xemVe = new frmXemVe(idKH);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVeDaMuaActionPerformed
 
     /**
      * @param args the command line arguments
