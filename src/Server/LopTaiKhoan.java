@@ -41,7 +41,7 @@ public class LopTaiKhoan {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(config.DB_URL, config.DB_USER, config.DB_PASS);
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM taikhoan WHERE taikhoan = '"+ user +"' AND matkhau = '"+ password+ "' AND admin='1";
+            String sql = "SELECT * FROM taikhoan WHERE taikhoan = '"+ user +"' AND matkhau = '"+ password+ "' AND admin='1'";
             rs = stmt.executeQuery(sql);
             while(rs.next()){
                 return true;
