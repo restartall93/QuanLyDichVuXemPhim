@@ -142,7 +142,7 @@ public class frmDangNhap extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 59, 390, 370));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\clone code github\\QuanLyDichVuXemPhim\\src\\resources\\theme-2.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/theme-2.png"))); // NOI18N
         jLabel5.setText("jLabel5");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, -1));
 
