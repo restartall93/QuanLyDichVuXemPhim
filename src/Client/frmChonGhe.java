@@ -28,7 +28,11 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-
+ 
+/**
+ *
+ * @author DELL
+ */
 public class frmChonGhe {
     private ArrayList<Integer> listGheChon = new ArrayList<>();
     private ArrayList<Integer> DSGheDaDat = new ArrayList<>();
@@ -191,5 +195,5 @@ public class frmChonGhe {
     }
     public static void main(String[] args) {
         frmChonGhe frmChonGhe = new frmChonGhe(idKH, idPhim, idRap, idPhong, idLich, giaVe);
-    }
+    }   
 }
