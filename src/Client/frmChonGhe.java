@@ -28,7 +28,11 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-
+ 
+/**
+ *
+ * @author DELL
+ */
 public class frmChonGhe {
     private ArrayList<Integer> listGheChon = new ArrayList<>();
     private ArrayList<Integer> DSGheDaDat = new ArrayList<>();
@@ -129,8 +133,8 @@ public class frmChonGhe {
         next.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                frmThanhToan thanhToan = new frmThanhToan(idKH, idPhim, idRap, idPhong, idLich, giaVe, listGheChon);
-//                frame.setVisible(false);
+                frmThanhToan thanhToan = new frmThanhToan(idKH, idPhim, idRap, idPhong, idLich, giaVe, listGheChon);
+                frame.setVisible(false);
 
             }
         });
@@ -142,8 +146,8 @@ public class frmChonGhe {
         prev.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                frmChonLich chonLich = new frmChonLich(idKH, idPhim, idRap);
-//                frame.setVisible(false);
+                frmChonLich chonLich = new frmChonLich(idKH, idPhim, idRap);
+                frame.setVisible(false);
 
             }
         });
@@ -191,5 +195,5 @@ public class frmChonGhe {
     }
     public static void main(String[] args) {
         frmChonGhe frmChonGhe = new frmChonGhe(idKH, idPhim, idRap, idPhong, idLich, giaVe);
-    }
+    }   
 }
