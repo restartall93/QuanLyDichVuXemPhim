@@ -133,7 +133,10 @@ public class frmChonGhe {
         next.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmThanhToan thanhToan = new frmThanhToan(idKH, idPhim, idRap, idPhong, idLich, giaVe, listGheChon);
+//                frmThanhToan thanhToan = new frmThanhToan(idKH, idPhim, idRap, idPhong, idLich, giaVe, listGheChon);
+                
+                frmBongNuoc bn = new frmBongNuoc(idKH, idPhim, idRap, idPhong, idLich, giaVe, listGheChon);
+                bn.setVisible(true);
                 frame.setVisible(false);
 
             }

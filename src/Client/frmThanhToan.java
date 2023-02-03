@@ -33,12 +33,13 @@ public class frmThanhToan {
     private static int idRap;
     private static int idPhong;
     private static int giaVe;
+    private static String idBongNuoc;
     private static String idKH;
     private static int idLich;
     private static ArrayList<Integer> listGheChon = new ArrayList();
 
 
-    frmThanhToan(String idkh, int idp, int idr, int idphg, int idl, int giave, ArrayList<Integer> listGhe) {
+    frmThanhToan(String idkh, int idp, int idr, int idphg, int idl, int giave, ArrayList<Integer> listGhe, String idbn) {
         idKH = idkh;
         idPhim = idp;
         idRap = idr;
@@ -46,6 +47,7 @@ public class frmThanhToan {
         idLich = idl;
         giaVe = giave;
         listGheChon = listGhe;
+        idBongNuoc = idbn;
         khoitao();
     }
     
@@ -55,14 +57,17 @@ public class frmThanhToan {
         pnlThanhToan = new JPanel(new BorderLayout());
         pnlThanhToan.setBorder(new EmptyBorder(30, 10, 10, 10));
         pnlThanhToan.setBackground(Color.decode("0x130f40"));
-        Label lbl1 = new Label("Giá Vé \t x \t Số Lượng \t = \t Thành tiền: ");
+        Label lbl1 = new Label("Giá Vé \t x \t Số Lượng \t + Bỏng Nước \t =\t Thành tiền: ");
         lbl1.setAlignment(Label.CENTER);
         lbl1.setForeground(Color.WHITE);
         lbl1.setFont(new Font("Tahoma", 1, 12));
         lbl1.setBackground(Color.decode("0x22a6b3"));
         pnlThanhToan.add(lbl1, BorderLayout.NORTH);
         
-        Label lbl2 = new Label(giaVe + " \t x \t "+listGheChon.size() + " \t = \t "+ (giaVe*listGheChon.size()) + " VND");
+        String[] prices = idBongNuoc.split(",");
+        int price = 20000 * Integer.parseInt(prices[0].split("x")[1]) + 10000 * Integer.parseInt(prices[1].split("x")[1]);
+        
+        Label lbl2 = new Label(giaVe + " \t x \t "+listGheChon.size() + " + " + String.valueOf(price) + " \t = \t "+ (giaVe*listGheChon.size() + price) + " VND");
         lbl2.setAlignment(Label.CENTER);
         lbl2.setForeground(Color.WHITE);
         lbl2.setFont(new Font("Tahoma", 1, 12));
@@ -82,8 +87,12 @@ public class frmThanhToan {
         prev.setFont(new java.awt.Font("Tahoma", 1, 14));
         prev.setForeground(new java.awt.Color(255, 255, 255));
         prev.addActionListener((ActionEvent e) -> {
-            frmChonGhe chonGhe = new frmChonGhe(idKH, idPhim, idRap, idPhong, idLich, giaVe);
-            frame.setVisible(false);
+//            frmChonGhe chonGhe = new frmChonGhe(idKH, idPhim, idRap, idPhong, idLich, giaVe);
+//            frame.setVisible(false);
+
+            frmBongNuoc bn = new frmBongNuoc(idKH, idPhim, idRap, idPhong, idLich, giaVe, listGheChon);
+                bn.setVisible(true);
+                frame.setVisible(false);
         });
         bottomPanel.add(prev, BorderLayout.WEST);
         
@@ -131,6 +140,6 @@ public class frmThanhToan {
     }
     
     public static void main(String[] args) {
-        frmThanhToan frmThanhToan = new frmThanhToan(idKH, idPhim, idRap, idPhong, idLich, giaVe, listGheChon);
+        frmThanhToan frmThanhToan = new frmThanhToan(idKH, idPhim, idRap, idPhong, idLich, giaVe, listGheChon, idBongNuoc);
     }
 }
