@@ -11,6 +11,7 @@ public class frmTrangChu extends javax.swing.JFrame {
      * Creates new form frmTrangChu
      */
     public frmTrangChu(String idkh) {
+        setLocationRelativeTo(null);
         idKH = idkh;
         initComponents();
     }
@@ -33,8 +34,13 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnDangXuat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quản Lý Đặt Vé Xem Phim");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(687, 300));
+        setSize(new java.awt.Dimension(687, 300));
 
         jPanel1.setBackground(new java.awt.Color(19, 15, 64));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(48, 51, 107));
 

@@ -53,6 +53,7 @@ public class frmBongNuoc extends javax.swing.JFrame {
         slgNuoc = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chọn Bỏng Nước");
 
         jPanel1.setBackground(new java.awt.Color(19, 15, 64));
 
