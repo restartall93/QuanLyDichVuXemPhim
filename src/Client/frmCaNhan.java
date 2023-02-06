@@ -157,6 +157,11 @@ public class frmCaNhan extends javax.swing.JFrame {
             int  resDangKy = xl.CapNhat(taikhoan, ten, matkhau);
             if(resDangKy == 1) {
                 JOptionPane.showMessageDialog(this,"Đã lưu thay đổi!","Thành Công",JOptionPane.INFORMATION_MESSAGE);
+                frmTrangChu trangChu = new frmTrangChu(taikhoan);
+                //trangChu.setExtendedState(MAXIMIZED_BOTH);
+                trangChu.setLocationRelativeTo(null);
+                trangChu.setVisible(true);
+                this.setVisible(false);
             }
             else{
                 JOptionPane.showMessageDialog(this,"Lỗi!","Lỗi",JOptionPane.ERROR_MESSAGE);                

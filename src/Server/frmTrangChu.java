@@ -13,13 +13,42 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class frmTrangChu extends javax.swing.JFrame {
+
     private boolean RMI_isOn = false;
     public Config config = new Config();
+
     /**
      * Creates new form frmTrangChu
      */
     public frmTrangChu() {
         initComponents();
+        onServer();
+    }
+
+    void onServer() {
+        if (!RMI_isOn) {
+            try {
+                LocateRegistry.createRegistry(config.port);
+            } catch (RemoteException ex) {
+                Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            XuLy xuLy = null;
+            try {
+                xuLy = new XuLy();
+            } catch (RemoteException ex) {
+                Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                Naming.rebind(config.rmihost, xuLy);
+            } catch (RemoteException | MalformedURLException ex) {
+                Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println("Server Ready");
+            btnHeThong.setText("Hệ thống: Đã bật");
+            btnHeThong.setEnabled(RMI_isOn);
+            btnHeThong.setForeground(Color.black);
+            RMI_isOn = !RMI_isOn;
+        }
     }
 
     /**
@@ -129,7 +158,7 @@ public class frmTrangChu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHeThongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHeThongActionPerformed
-        if(!RMI_isOn){
+        if (!RMI_isOn) {
             try {
                 LocateRegistry.createRegistry(config.port);
             } catch (RemoteException ex) {
@@ -156,10 +185,9 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
         new frmDangNhap().setVisible(true);
-        this.setVisible(false);        
+        this.setVisible(false);
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -186,9 +214,9 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-          
-                new frmTrangChu().setVisible(true);
-            
+
+            new frmTrangChu().setVisible(true);
+
         });
     }
 

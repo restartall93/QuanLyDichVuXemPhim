@@ -11,7 +11,7 @@ package Server;
 public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
-        frmDangNhap frmdangnhap = new frmDangNhap();
-        frmdangnhap.setVisible(true);
+        frmTrangChu trangChu = new frmTrangChu();
+        trangChu.setVisible(true);
     }
 }
