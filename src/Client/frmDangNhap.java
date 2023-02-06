@@ -21,8 +21,8 @@ public class frmDangNhap extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        txtUser.setText("user0");
-        txtPass.setText("123456");
+//        txtUser.setText("user0");
+//        txtPass.setText("123456");
     }
 
     /**
