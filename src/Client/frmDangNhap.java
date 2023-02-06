@@ -197,7 +197,8 @@ public class frmDangNhap extends javax.swing.JFrame {
             boolean  resDangNhap = ip.DangNhap(u, p);
             if(resDangNhap) {
                 frmTrangChu trangChu = new frmTrangChu(u);
-                trangChu.setExtendedState(MAXIMIZED_BOTH);
+                //trangChu.setExtendedState(MAXIMIZED_BOTH);
+                trangChu.setLocationRelativeTo(null);
                 trangChu.setVisible(true);
                 this.setVisible(false);
             } else{

@@ -11,7 +11,8 @@ public class frmTrangChu extends javax.swing.JFrame {
      * Creates new form frmTrangChu
      */
     public frmTrangChu(String idkh) {
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
+        setResizable(false);
         idKH = idkh;
         initComponents();
     }
