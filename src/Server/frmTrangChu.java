@@ -22,33 +22,6 @@ public class frmTrangChu extends javax.swing.JFrame {
      */
     public frmTrangChu() {
         initComponents();
-        onServer();
-    }
-
-    void onServer() {
-        if (!RMI_isOn) {
-            try {
-                LocateRegistry.createRegistry(config.port);
-            } catch (RemoteException ex) {
-                Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            XuLy xuLy = null;
-            try {
-                xuLy = new XuLy();
-            } catch (RemoteException ex) {
-                Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                Naming.rebind(config.rmihost, xuLy);
-            } catch (RemoteException | MalformedURLException ex) {
-                Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            System.out.println("Server Ready");
-            btnHeThong.setText("Hệ thống: Đã bật");
-            btnHeThong.setEnabled(RMI_isOn);
-            btnHeThong.setForeground(Color.black);
-            RMI_isOn = !RMI_isOn;
-        }
     }
 
     /**
