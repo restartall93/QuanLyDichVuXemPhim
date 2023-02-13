@@ -8,6 +8,7 @@ import Server.InterfaceXuLy;
 import Entity.Ve;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import static java.awt.Frame.MAXIMIZED_BOTH;
@@ -15,6 +16,12 @@ import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.Naming;
@@ -28,6 +35,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -63,11 +71,16 @@ public class frmXemVe {
             jpnlVe.setBackground(Color.decode("0x30336B"));
             JButton b;
             try {
-                b = new JButton(new ImageIcon(new URL("https://www.google.com.vn/url?sa=i&url=https%3A%2F%2Ffastandfurious.fandom.com%2Fwiki%2FFast_%2526_Furious_6&psig=AOvVaw0XgJG2byaLe7oZl1cfSyhH&ust=1673928440412000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLCfm8Oby_wCFQAAAAAdAAAAABAE"+v.getMa())));
+                b = new JButton(new ImageIcon(new URL("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3q5RMWtSZ4vlGzcsvfLt9akst4pCBbqZ-Gg&usqp=CAU")));
                 b.setBorder(new EmptyBorder(3, 3, 3, 3));
                 b.setForeground(Color.decode("0xffffff"));
                 b.setPreferredSize(new Dimension(100,100 ));
                 b.setBackground(Color.decode("0x30336B"));
+                b.addActionListener(new ActionListener() { 
+                    public void actionPerformed(ActionEvent e) { 
+                        ExportTXT(v);
+                    } 
+                });
                 jpnlVe.add(b, BorderLayout.WEST);
             } catch (MalformedURLException ex) {
                 Logger.getLogger(frmXemVe.class.getName()).log(Level.SEVERE, null, ex);
@@ -123,6 +136,48 @@ public class frmXemVe {
         
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+    }
+    
+    void ExportTXT(Ve v){
+        File file = new File("src\\Txt\\" + v.getMa() + ".txt");
+        
+        if(file.exists())
+        {
+            JOptionPane.showMessageDialog(null, "Mã hóa đơn đã tồn tại! ");
+            return;
+        }
+        
+        try{
+            OutputStream ot = new FileOutputStream(file);
+            OutputStreamWriter out = new OutputStreamWriter(ot);
+
+//            out.write("\n");
+//            out.write("--------------------------------------------- THÔNG TIN VÉ -------------------------------------------------\r\n\r\n");
+            out.write("\n");
+            out.write("Mã vé: " + v.getMa() + "\r\n");
+            out.write("Thời gian chiếu: " + v.getGio() + " " + v.getNgay() + "\r\n");
+//            out.write("\n---------------------------------------------- THÔNG TIN PHIM -----------------------------------------------\r\n");
+            out.write("Tên phim: " + v.getTenPhim() + "\r\n");
+            out.write("\n");
+            out.write("Phòng: " + v.getTenPhong() + "\r\n");
+            out.write("\n");
+            out.write("Rạp: " + v.getTenRap()+ "\r\n");
+            out.write("\n");
+            out.write("Ghế: " + v.getTenGhe()+ "\r\n");
+            out.write("\n");
+//            out.write("\n---------------------------------------------------- CẢM ƠN -------------------------------------------------------\r\n");
+            
+            out.flush();
+            ot.close();
+            out.close();
+            
+            JOptionPane.showMessageDialog(null, "In hóa đơn thành công! ");
+            
+            Desktop.getDesktop().open(file);
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     
     private static JFrame createFrame() {

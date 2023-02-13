@@ -51,6 +51,10 @@ public class frmBongNuoc extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         slgBong = new javax.swing.JTextField();
         slgNuoc = new javax.swing.JTextField();
+        addBong = new javax.swing.JButton();
+        addNuoc = new javax.swing.JButton();
+        subNuoc = new javax.swing.JButton();
+        subBong = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chọn Bỏng Nước");
@@ -96,19 +100,78 @@ public class frmBongNuoc extends javax.swing.JFrame {
         jButton1.setText("Bỏng");
         jButton1.setBorder(null);
 
+        slgBong.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        slgBong.setText("0");
+
+        slgNuoc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        slgNuoc.setText("0");
+        slgNuoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                slgNuocActionPerformed(evt);
+            }
+        });
+
+        addBong.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        addBong.setText("+");
+        addBong.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        addBong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBongActionPerformed(evt);
+            }
+        });
+
+        addNuoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        addNuoc.setText("+");
+        addNuoc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        addNuoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNuocActionPerformed(evt);
+            }
+        });
+
+        subNuoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        subNuoc.setText("-");
+        subNuoc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        subNuoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subNuocActionPerformed(evt);
+            }
+        });
+
+        subBong.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        subBong.setText("-");
+        subBong.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        subBong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subBongActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                    .addComponent(slgBong))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                    .addComponent(slgNuoc))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(subBong, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(slgBong, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addBong)
+                        .addGap(57, 57, 57)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(subNuoc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(slgNuoc, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addNuoc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 74, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
@@ -125,12 +188,19 @@ public class frmBongNuoc extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(slgNuoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addNuoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(slgNuoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(subNuoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(176, 176, 176))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(slgBong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(slgBong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addBong, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(subBong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(105, 105, 105)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,6 +240,36 @@ public class frmBongNuoc extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void addBongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBongActionPerformed
+        int count = Integer.parseInt(slgBong.getText());
+        slgBong.setText(String.valueOf(++count));
+    }//GEN-LAST:event_addBongActionPerformed
+
+    private void subBongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subBongActionPerformed
+        int count = Integer.parseInt(slgBong.getText());
+
+        if(--count <= 0) count = 0;
+        
+        slgBong.setText(String.valueOf(count));
+    }//GEN-LAST:event_subBongActionPerformed
+
+    private void subNuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subNuocActionPerformed
+        int count = Integer.parseInt(slgNuoc.getText());
+        
+        if(--count <= 0) count = 0;
+        
+        slgNuoc.setText(String.valueOf(count));
+    }//GEN-LAST:event_subNuocActionPerformed
+
+    private void addNuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNuocActionPerformed
+        int count = Integer.parseInt(slgNuoc.getText());
+        slgNuoc.setText(String.valueOf(++count));
+    }//GEN-LAST:event_addNuocActionPerformed
+
+    private void slgNuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slgNuocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_slgNuocActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -206,6 +306,8 @@ public class frmBongNuoc extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBong;
+    private javax.swing.JButton addNuoc;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
@@ -213,5 +315,7 @@ public class frmBongNuoc extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField slgBong;
     private javax.swing.JTextField slgNuoc;
+    private javax.swing.JButton subBong;
+    private javax.swing.JButton subNuoc;
     // End of variables declaration//GEN-END:variables
 }
