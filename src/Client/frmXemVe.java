@@ -71,7 +71,7 @@ public class frmXemVe {
             jpnlVe.setBackground(Color.decode("0x30336B"));
             JButton b;
             try {
-                b = new JButton(new ImageIcon(new URL("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3q5RMWtSZ4vlGzcsvfLt9akst4pCBbqZ-Gg&usqp=CAU")));
+                b = new JButton(new ImageIcon(new URL("https://icons.iconarchive.com/icons/designbolts/free-multimedia/72/Printer-icon.png")));
                 b.setBorder(new EmptyBorder(3, 3, 3, 3));
                 b.setForeground(Color.decode("0xffffff"));
                 b.setPreferredSize(new Dimension(100,100 ));
